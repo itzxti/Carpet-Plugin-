@@ -9,12 +9,17 @@ allprojects {
 }
 
 java {
-    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 dependencies {
     implementation project(":CarpetPlugin-Core")
 }
 
-shadowJar { archiveClassifier.set('') }
+shadowJar {
+    archiveClassifier.set('')
+}
+
 assemble.dependsOn(shadowJar)

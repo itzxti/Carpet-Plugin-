@@ -1,2 +1,9 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+    }
+}
+
 rootProject.name = 'CarpetPlugin'
 include 'CarpetPlugin-Core'

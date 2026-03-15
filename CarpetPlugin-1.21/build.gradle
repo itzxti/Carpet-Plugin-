@@ -1,0 +1,39 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:7.1.2'
+    }
+}
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'java'
+}
+
+allprojects {
+    group = 'com.ishland.bukkit'
+    version = '1.21-SNAPSHOT'
+}
+
+sourceCompatibility = '21'
+targetCompatibility = '21'
+
+dependencies {
+    implementation project(":CarpetPlugin-Core")
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+    }
+}
+
+shadowJar {
+    archiveClassifier.set('')
+}
+
+assemble.dependsOn(shadowJar)

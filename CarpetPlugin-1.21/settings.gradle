@@ -1,0 +1,2 @@
+rootProject.name = 'CarpetPlugin'
+include 'CarpetPlugin-Core'

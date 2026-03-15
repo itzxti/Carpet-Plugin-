@@ -23,7 +23,6 @@ jobs:
         run: chmod +x CarpetPlugin-1.21/gradlew
 
 - name: Build with Gradle
-        working-directory: CarpetPlugin-1.21
         run: ./gradlew shadowJar
 
       - name: Upload JAR artifact

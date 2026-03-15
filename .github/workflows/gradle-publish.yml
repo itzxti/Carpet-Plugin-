@@ -20,13 +20,13 @@ jobs:
           distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: chmod +x CarpetPlugin-1.21/gradlew
 
       - name: Build with Gradle
-        run: ./gradlew shadowJar
+        run: cd CarpetPlugin-1.21 && ./gradlew shadowJar
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
         with:
           name: CarpetPlugin-1.21
-          path: build/libs/*.jar
+          path: CarpetPlugin-1.21/build/libs/*.jar

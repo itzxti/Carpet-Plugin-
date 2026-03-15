@@ -1,11 +1,11 @@
-import org.apache.tools.ant.filters.ReplaceTokens
-
 plugins {
     id 'java'
+    id 'io.papermc.paperweight.userdev' version '1.7.1'
 }
 
-sourceCompatibility = '21'
-targetCompatibility = '21'
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+}
 
 repositories {
     mavenCentral()
@@ -13,11 +13,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly "io.papermc.paper:paper-api:${project.paper_version}"
+    paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
 }
 
-processResources {
-    from(sourceSets.main.resources.srcDirs) {
-        filter ReplaceTokens, tokens: [version: version]
-    }
+tasks.assemble {
+    dependsOn tasks.reobfJar
 }
